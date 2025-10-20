@@ -1,0 +1,7 @@
+dist
+node_modules
+.turbo
+generated
+
+.env
+tsconfig.tsbuildinfo

@@ -1,0 +1,13 @@
+{
+  "name": "workouts",
+  "version": "1.0.0",
+  "description": "",
+  "packageManager": "pnpm@10.15.0",
+  "scripts": {
+    "dev": "turbo run dev --ui tui",
+    "build": "turbo run build"
+  },
+  "devDependencies": {
+    "turbo": "^2.5.6"
+  }
+}

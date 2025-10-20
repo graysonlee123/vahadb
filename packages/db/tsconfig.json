@@ -1,0 +1,7 @@
+{
+  "extends": "@repo/tsconfig/db.json",
+  "compilerOptions": {
+    "outDir": "dist"
+  },
+  "include": ["src"]
+}

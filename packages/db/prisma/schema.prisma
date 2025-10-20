@@ -1,0 +1,43 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+model Weight {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  date      DateTime
+  note      String?
+  updatedAt DateTime @updatedAt
+  weight    Int
+}
+
+enum WorkoutType {
+  PUSHUP
+  SQUAT
+}
+
+model Set {
+  id        Int         @id @default(autoincrement())
+  count     Int
+  createdAt DateTime    @default(now())
+  type      WorkoutType
+  updatedAt DateTime    @updatedAt
+  weight    Float?
+  workoutId Int
+
+  workout Workout @relation(fields: [workoutId], references: [id], onDelete: Cascade)
+}
+
+model Workout {
+  id        Int         @id @default(autoincrement())
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+
+  sets      Set[]
+}
