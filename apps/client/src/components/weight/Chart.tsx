@@ -25,7 +25,7 @@ export function WeightChart() {
               label: 'Weight',
               data: query.data.map((item) => ({
                 x: item.date,
-                y: item.weight,
+                y: (item.weight / 454).toFixed(1),
               })).sort((a, b) => new Date(a.x).getTime() - new Date(b.x).getTime()),
               tension: 0.1
             },

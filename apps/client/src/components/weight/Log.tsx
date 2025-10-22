@@ -1,5 +1,6 @@
 import { useMutation, useQuery } from "@tanstack/react-query"
 import { invalidateWeight, trpc } from "../../utils/trpc.js"
+import LogItem from "./LogItem.js"
 
 export function Log() {
   const query = useQuery(trpc.weight.list.queryOptions())
@@ -38,17 +39,12 @@ export function Log() {
           <ul>
             {query.data.map((item) => (
               <li key={item.id}>
-                <div>
-                  {item.date}
-                </div>
-                <div>
-                  {item.weight} {item.note && `(${item.note})`}
-                </div>
-                <div>
-                  <button onClick={() => handleClick(item.id)}>
-                    Delete
-                  </button>
-                </div>
+                <LogItem
+                  date={item.date}
+                  weight={item.weight}
+                  note={item.note}
+                  onDelete={() => handleClick(item.id)}
+                />
               </li>
             ))}
           </ul>

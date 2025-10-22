@@ -1,5 +1,6 @@
 import { useMutation } from "@tanstack/react-query"
 import { useEffect, useId, useState, type FormEvent } from "react"
+import { usePoundsToGrams } from "../../hooks/conversions.js"
 import { formatDate } from "../../utils/formatDate.js"
 import { invalidateWeight, trpc } from "../../utils/trpc.js"
 
@@ -18,6 +19,7 @@ export function Form() {
 
   const [weight, setWeight] = useState('')
   const weightId = useId()
+  const weightAsGrams = usePoundsToGrams(parseFloat(weight))
 
   const [note, setNote] = useState('')
   const noteId = useId()
@@ -26,7 +28,7 @@ export function Form() {
     e.preventDefault()
 
     mutation.mutate({
-      weight: weight,
+      weight: weightAsGrams,
       note: note,
       date: date,
     })
