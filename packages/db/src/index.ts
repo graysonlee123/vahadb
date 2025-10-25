@@ -1,5 +1,5 @@
-import { PrismaClient, WorkoutType } from './generated/prisma/client.js'
+import { PrismaClient } from './generated/prisma/client.js'
 
 const Prisma = new PrismaClient()
 
-export { Prisma, WorkoutType }
+export { Prisma }

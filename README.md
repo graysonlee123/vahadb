@@ -40,6 +40,7 @@ pnpm --filter db exec prisma generate
 
 # Run local database migrations
 pnpm --filter db exec prisma migrate dev
+pnpm --filter db exec prisma migrate dev --name foo
 
 # Reset local database
 pnpm --filter db exec prisma migrate reset

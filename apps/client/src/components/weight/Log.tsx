@@ -26,7 +26,7 @@ export function Log() {
 
       {query.isError && (
         <p>
-          Error loading workouts.
+          Error loading weight logs.
         </p>
       )}
 

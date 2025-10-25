@@ -1,4 +1,4 @@
-import { Prisma, WorkoutType } from '@repo/db'
+import { Prisma } from '@repo/db'
 import { initTRPC } from "@trpc/server";
 import z from "zod";
 
@@ -38,37 +38,6 @@ const appRouter = router({
       })
     }),
   },
-  workout: {
-    create: publicProcedure.input(z.object({
-      reps: z.object({
-        type: z.literal(Object.values(WorkoutType)),
-        count: z.number().int().min(0).max(999),
-        weight: z.number().min(0).max(999).optional(),
-      }).array(),
-    })).mutation(async (opts) => {
-      return Prisma.workout.create({
-        data: {
-          sets: {
-            create: opts.input.reps.map((rep) => ({
-              count: rep.count,
-              type: rep.type,
-              weight: rep.weight,
-            }))
-          },
-        },
-      })
-    }),
-    list: publicProcedure.query(async (opts) => {
-      return Prisma.workout.findMany({
-        orderBy: {
-          createdAt: 'desc',
-        },
-        include: {
-          sets: true,
-        },
-      })
-    }),
-  }
 });
 
 export type AppRouter = typeof appRouter
