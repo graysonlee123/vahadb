@@ -5,6 +5,10 @@ import { config } from 'dotenv'
 
 config()
 
+if (typeof process.env.DATABASE_URL !== 'string') {
+  throw new Error('Database environment variable not found.')
+}
+
 const server = createHTTPServer({
   router: appRouter,
   middleware: cors(),
