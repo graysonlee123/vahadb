@@ -9,9 +9,9 @@ const publicProcedure = t.procedure;
 const appRouter = router({
   weight: {
     create: publicProcedure.input(z.object({
-      weight: z.coerce.number().min(0).max(999999),
-      note: z.string().max(999).transform((value) => value.length === 0 ? undefined : value),
       date: z.string().regex(/\d{4}-\d{2}-\d{2}/),
+      weight: z.coerce.number().min(0).max(999999).transform(Math.round),
+      note: z.string().max(999).transform((value) => value.length === 0 ? undefined : value),
     })).mutation(async (opts) => {
       return Prisma.weight.create({
         data: {

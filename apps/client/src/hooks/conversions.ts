@@ -3,6 +3,8 @@ import { useMemo } from "react";
 /**
  * Converts pounds to grams.
  * 
+ * Will return decimal numbers.
+ * 
  * @param pounds Weight in pounds.
  * 
  * @returns Weight in grams.
@@ -13,6 +15,8 @@ export function usePoundsToGrams(pounds: number) {
 
 /**
  * Converts grams to pounds.
+ * 
+ * Will return a string representaion of pounds rounded to 1 decimal place.
  * 
  * @param grams Weight in grams.
  * 
