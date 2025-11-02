@@ -3,6 +3,7 @@ import { useEffect, useId, useState, type FormEvent } from "react"
 import { usePoundsToGrams } from "../../hooks/conversions.js"
 import { formatDate } from "../../utils/formatDate.js"
 import { invalidateWeight, trpc } from "../../utils/trpc.js"
+import Label from "../forms/Label.js"
 
 export function Form() {
   const mutation = useMutation(trpc.weight.create.mutationOptions({
@@ -47,9 +48,9 @@ export function Form() {
       </h2>
       <form onSubmit={handleSubmit}>
         <fieldset>
-          <label htmlFor={dateId}>
+          <Label htmlFor={dateId}>
             Date
-          </label>
+          </Label>
           <input
             id={dateId}
             type="date"
@@ -59,9 +60,9 @@ export function Form() {
           />
         </fieldset>
         <fieldset>
-          <label htmlFor={weightId}>
+          <Label htmlFor={weightId}>
             Weight (lbs)
-          </label>
+          </Label>
           <input
             id={weightId}
             type="number"
@@ -73,9 +74,9 @@ export function Form() {
           />
         </fieldset>
         <fieldset>
-          <label htmlFor={noteId}>
+          <Label htmlFor={noteId}>
             Note
-          </label>
+          </Label>
           <input
             id={noteId}
             type="text"
