@@ -66,7 +66,7 @@ export function Form() {
           <input
             id={weightId}
             type="number"
-            step="1"
+            step="0.1"
             value={weight}
             onChange={(e) => setWeight(e.target.value)}
             placeholder="e.g. 180"
